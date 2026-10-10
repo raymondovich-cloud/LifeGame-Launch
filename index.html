@@ -270,7 +270,7 @@
       }
 
       if (updateCountdown()) {
-        window.setInterval(() => {
+        const timer = window.setInterval(() => {
           if (!updateCountdown()) window.clearInterval(timer);
         }, 1000);
       }

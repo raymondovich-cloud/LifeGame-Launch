@@ -1,0 +1,280 @@
+<!-- index.html — Version 1.0 -->
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#050505">
+  <meta name="description" content="LifeGame — перестань наблюдать. Начни играть. Запуск 1 января 2027 года.">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>LifeGame — запуск 01.01.2027</title>
+  <style>
+    /* index.html — Version 1.0 */
+    :root {
+      color-scheme: dark;
+      --background: #050505;
+      --text: #f7f5f1;
+      --muted: #8c8882;
+      --orange: #ff7900;
+      --amber: #ffb12b;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { min-height: 100%; background: var(--background); }
+
+    body {
+      min-height: 100vh;
+      min-height: 100svh;
+      margin: 0;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 50% 39%, rgba(255, 103, 0, .105) 0%, rgba(255, 103, 0, .035) 25%, transparent 54%),
+        radial-gradient(ellipse at 50% 105%, rgba(255, 87, 0, .07) 0%, transparent 48%),
+        var(--background);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    main {
+      position: relative;
+      display: flex;
+      min-height: 100vh;
+      min-height: 100svh;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: max(28px, env(safe-area-inset-top)) 22px max(28px, env(safe-area-inset-bottom));
+      isolation: isolate;
+    }
+
+    .ambient {
+      position: absolute;
+      z-index: -1;
+      top: 50%;
+      left: 50%;
+      width: min(78vw, 560px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: rgba(255, 100, 0, .055);
+      filter: blur(95px);
+      transform: translate(-50%, -58%);
+      pointer-events: none;
+    }
+
+    .content {
+      display: flex;
+      width: 100%;
+      max-width: 680px;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      animation: arrive 1100ms cubic-bezier(.2,.7,.2,1) both;
+    }
+
+    .brand-mark {
+      display: block;
+      width: clamp(142px, 31vw, 218px);
+      height: auto;
+      overflow: visible;
+      filter: drop-shadow(0 0 24px rgba(255, 113, 0, .12));
+    }
+
+    .wordmark {
+      margin: 24px 0 0;
+      font-size: clamp(11px, 2.4vw, 13px);
+      font-weight: 600;
+      letter-spacing: .34em;
+      text-indent: .34em;
+      text-transform: uppercase;
+      color: #bdb7ae;
+    }
+
+    .tagline {
+      margin: clamp(34px, 7vh, 58px) 0 0;
+      font-size: clamp(25px, 5.8vw, 42px);
+      font-weight: 650;
+      line-height: 1.16;
+      letter-spacing: -.045em;
+      text-wrap: balance;
+    }
+
+    .tagline span {
+      display: block;
+      margin-top: 3px;
+      background: linear-gradient(100deg, #fff2d9 4%, #ffb32c 48%, #ff6a00 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .launch-label {
+      margin: clamp(36px, 7vh, 54px) 0 0;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 650;
+      letter-spacing: .25em;
+      text-indent: .25em;
+      text-transform: uppercase;
+    }
+
+    .launch-date {
+      margin: 13px 0 0;
+      font-size: clamp(17px, 4vw, 21px);
+      font-weight: 550;
+      letter-spacing: .18em;
+      text-indent: .18em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      width: min(100%, 430px);
+      gap: clamp(9px, 3vw, 22px);
+      margin-top: 26px;
+    }
+
+    .time-unit { min-width: 0; }
+
+    .time-value {
+      display: block;
+      color: #f6f2ec;
+      font-size: clamp(27px, 6.6vw, 43px);
+      font-weight: 520;
+      line-height: 1;
+      letter-spacing: -.055em;
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: "tnum";
+    }
+
+    .time-label {
+      display: block;
+      margin-top: 11px;
+      color: #77716a;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .footer {
+      position: absolute;
+      right: 20px;
+      bottom: max(16px, env(safe-area-inset-bottom));
+      left: 20px;
+      color: #57534e;
+      font-size: 9px;
+      letter-spacing: .16em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    @keyframes arrive {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-height: 680px) {
+      .brand-mark { width: clamp(110px, 23vh, 160px); }
+      .wordmark { margin-top: 12px; }
+      .tagline { margin-top: 24px; font-size: clamp(23px, 5vh, 34px); }
+      .launch-label { margin-top: 24px; }
+      .countdown { margin-top: 19px; }
+      .time-label { margin-top: 8px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main aria-labelledby="tagline">
+    <div class="ambient" aria-hidden="true"></div>
+    <section class="content" aria-label="Анонс запуска LifeGame">
+      <svg class="brand-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="logo-title logo-desc">
+        <title id="logo-title">LifeGame</title>
+        <desc id="logo-desc">Золотой треугольный символ LifeGame в круге.</desc>
+        <defs>
+          <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#fff36a"/><stop offset="38%" stop-color="#ffc21a"/><stop offset="72%" stop-color="#ff8a00"/><stop offset="100%" stop-color="#ffd83d"/>
+          </linearGradient>
+          <filter id="glow" x="-10%" y="-10%" width="120%" height="120%">
+            <feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <circle cx="512" cy="512" r="474" fill="none" stroke="url(#gold)" stroke-width="22" opacity=".92" filter="url(#glow)"/>
+        <circle cx="512" cy="512" r="474" fill="none" stroke="#ffad13" stroke-width="5"/>
+        <g fill="url(#gold)" stroke="#ffb21a" stroke-width="3" stroke-linejoin="round" filter="url(#glow)">
+          <path d="M512 120 L595 303 L855 710 L756 710 L512 365 L268 710 L169 710 L429 303 Z"/>
+          <path d="M169 720 L855 720 L806 805 L218 805 Z"/>
+        </g>
+        <g fill="#050505" stroke="#ff9d00" stroke-width="4" stroke-linejoin="round">
+          <path d="M512 165 L573 313 L792 678 L744 678 L512 340 L280 678 L232 678 L451 313 Z"/>
+          <path d="M232 720 L792 720 L760 775 L264 775 Z"/>
+        </g>
+        <text x="512" y="665" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="88" font-weight="700" letter-spacing="-3" fill="url(#gold)">LifeGame</text>
+      </svg>
+
+      <p class="wordmark">LifeGame</p>
+
+      <h1 class="tagline" id="tagline">Перестань наблюдать.<span>Начни играть.</span></h1>
+
+      <p class="launch-label">Старт проекта</p>
+      <p class="launch-date">01.01.2027</p>
+
+      <div class="countdown" role="timer" aria-label="Обратный отсчёт до запуска">
+        <div class="time-unit"><span class="time-value" id="days">—</span><span class="time-label">Дней</span></div>
+        <div class="time-unit"><span class="time-value" id="hours">—</span><span class="time-label">Часов</span></div>
+        <div class="time-unit"><span class="time-value" id="minutes">—</span><span class="time-label">Минут</span></div>
+        <div class="time-unit"><span class="time-value" id="seconds">—</span><span class="time-label">Секунд</span></div>
+      </div>
+    </section>
+
+    <footer class="footer">Новая игра начинается с тебя</footer>
+  </main>
+
+  <script>
+    // index.html — Version 1.0
+    (() => {
+      const target = new Date(2027, 0, 1, 0, 0, 0, 0).getTime();
+      const fields = {
+        days: document.getElementById("days"),
+        hours: document.getElementById("hours"),
+        minutes: document.getElementById("minutes"),
+        seconds: document.getElementById("seconds")
+      };
+      const pad = value => String(value).padStart(2, "0");
+
+      function updateCountdown() {
+        const remaining = Math.max(0, target - Date.now());
+        const totalSeconds = Math.floor(remaining / 1000);
+        fields.days.textContent = String(Math.floor(totalSeconds / 86400));
+        fields.hours.textContent = pad(Math.floor((totalSeconds % 86400) / 3600));
+        fields.minutes.textContent = pad(Math.floor((totalSeconds % 3600) / 60));
+        fields.seconds.textContent = pad(totalSeconds % 60);
+
+        if (remaining === 0) {
+          document.querySelector(".launch-label").textContent = "Мы запустились";
+          document.querySelector(".countdown").setAttribute("aria-label", "LifeGame запущен");
+          return false;
+        }
+        return true;
+      }
+
+      if (updateCountdown()) {
+        window.setInterval(() => {
+          if (!updateCountdown()) window.clearInterval(timer);
+        }, 1000);
+      }
+    })();
+  </script>
+</body>
+</html>

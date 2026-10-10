@@ -1,4 +1,4 @@
-<!-- index.html — Version 1.0 -->
+<!-- index.html — Version 1.1 -->
 <!doctype html>
 <html lang="ru">
 <head>
@@ -9,7 +9,7 @@
   <meta name="robots" content="noindex, nofollow, noarchive">
   <title>LifeGame — запуск 01.01.2027</title>
   <style>
-    /* index.html — Version 1.0 */
+    /* index.html — Version 1.1 */
     :root {
       color-scheme: dark;
       --background: #050505;
@@ -74,22 +74,18 @@
       animation: arrive 1100ms cubic-bezier(.2,.7,.2,1) both;
     }
 
-    .brand-mark {
-      display: block;
-      width: clamp(142px, 31vw, 218px);
-      height: auto;
-      overflow: visible;
-      filter: drop-shadow(0 0 24px rgba(255, 113, 0, .12));
-    }
-
     .wordmark {
-      margin: 24px 0 0;
-      font-size: clamp(11px, 2.4vw, 13px);
-      font-weight: 600;
-      letter-spacing: .34em;
-      text-indent: .34em;
+      margin: 0;
+      font-size: clamp(38px, 10vw, 70px);
+      font-weight: 650;
+      line-height: .98;
+      letter-spacing: -.065em;
       text-transform: uppercase;
-      color: #bdb7ae;
+      background: linear-gradient(100deg, #fff2d9 2%, #ffb32c 48%, #ff6a00 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 38px rgba(255, 113, 0, .08);
     }
 
     .tagline {
@@ -165,11 +161,39 @@
       right: 20px;
       bottom: max(16px, env(safe-area-inset-bottom));
       left: 20px;
-      color: #57534e;
-      font-size: 9px;
-      letter-spacing: .16em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      color: #77716a;
+      font-size: 10px;
+      letter-spacing: .12em;
       text-align: center;
-      text-transform: uppercase;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px 22px;
+    }
+
+    .footer-links a {
+      color: #c1b8ad;
+      text-decoration: none;
+      text-underline-offset: 4px;
+      transition: color 180ms ease;
+    }
+
+    .footer-links a:hover,
+    .footer-links a:focus-visible {
+      color: #ffad35;
+    }
+
+    .footer-links a:focus-visible {
+      outline: 1px solid #ffad35;
+      outline-offset: 4px;
+      border-radius: 2px;
     }
 
     @keyframes arrive {
@@ -178,8 +202,7 @@
     }
 
     @media (max-height: 680px) {
-      .brand-mark { width: clamp(110px, 23vh, 160px); }
-      .wordmark { margin-top: 12px; }
+      .wordmark { font-size: clamp(34px, 8vh, 52px); }
       .tagline { margin-top: 24px; font-size: clamp(23px, 5vh, 34px); }
       .launch-label { margin-top: 24px; }
       .countdown { margin-top: 19px; }
@@ -199,33 +222,9 @@
   <main aria-labelledby="tagline">
     <div class="ambient" aria-hidden="true"></div>
     <section class="content" aria-label="Анонс запуска LifeGame">
-      <svg class="brand-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="logo-title logo-desc">
-        <title id="logo-title">LifeGame</title>
-        <desc id="logo-desc">Золотой треугольный символ LifeGame в круге.</desc>
-        <defs>
-          <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#fff36a"/><stop offset="38%" stop-color="#ffc21a"/><stop offset="72%" stop-color="#ff8a00"/><stop offset="100%" stop-color="#ffd83d"/>
-          </linearGradient>
-          <filter id="glow" x="-10%" y="-10%" width="120%" height="120%">
-            <feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-          </filter>
-        </defs>
-        <circle cx="512" cy="512" r="474" fill="none" stroke="url(#gold)" stroke-width="22" opacity=".92" filter="url(#glow)"/>
-        <circle cx="512" cy="512" r="474" fill="none" stroke="#ffad13" stroke-width="5"/>
-        <g fill="url(#gold)" stroke="#ffb21a" stroke-width="3" stroke-linejoin="round" filter="url(#glow)">
-          <path d="M512 120 L595 303 L855 710 L756 710 L512 365 L268 710 L169 710 L429 303 Z"/>
-          <path d="M169 720 L855 720 L806 805 L218 805 Z"/>
-        </g>
-        <g fill="#050505" stroke="#ff9d00" stroke-width="4" stroke-linejoin="round">
-          <path d="M512 165 L573 313 L792 678 L744 678 L512 340 L280 678 L232 678 L451 313 Z"/>
-          <path d="M232 720 L792 720 L760 775 L264 775 Z"/>
-        </g>
-        <text x="512" y="665" text-anchor="middle" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="88" font-weight="700" letter-spacing="-3" fill="url(#gold)">LifeGame</text>
-      </svg>
+      <h1 class="wordmark" aria-label="LifeGame">LIFEGAME</h1>
 
-      <p class="wordmark">LifeGame</p>
-
-      <h1 class="tagline" id="tagline">Перестань наблюдать.<span>Начни играть.</span></h1>
+      <h2 class="tagline" id="tagline">Перестань наблюдать.<span>Начни играть.</span></h2>
 
       <p class="launch-label">Старт проекта</p>
       <p class="launch-date">01.01.2027</p>
@@ -238,11 +237,17 @@
       </div>
     </section>
 
-    <footer class="footer">Новая игра начинается с тебя</footer>
+    <footer class="footer">
+      <span>Новая игра начинается с тебя</span>
+      <nav class="footer-links" aria-label="Проекты Raymondovich">
+        <a href="https://raymondovich.ru" target="_blank" rel="noopener noreferrer">raymondovich.ru</a>
+        <a href="https://raymondovich.online" target="_blank" rel="noopener noreferrer">raymondovich.online</a>
+      </nav>
+    </footer>
   </main>
 
   <script>
-    // index.html — Version 1.0
+    // index.html — Version 1.1
     (() => {
       const target = new Date("2027-01-01T00:00:00+03:00").getTime();
       const fields = {
